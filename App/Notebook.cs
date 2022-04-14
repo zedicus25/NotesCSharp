@@ -105,7 +105,15 @@ namespace App
 
         private void ReadFromFile()
         {
-            
+            string str = File.ReadAllText("notes.txt");
+            string[] arr = str.Split('\n');
+            Array.Resize(ref arr, arr.Length-1);
+            foreach (var t in arr)
+            {
+                string[] elem = t.Split(":;");
+                Array.Resize(ref elem, elem.Length-1);
+                _notes.Add(new Note(elem[0],elem[1],elem[2], DateTime.Parse(elem[3])));
+            }
         }
 
         private bool IsHas(int ind) => ind > 0 && ind < _notes.Count;

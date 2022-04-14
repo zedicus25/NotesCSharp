@@ -17,10 +17,15 @@ namespace App
             Text = text;
             DateCreation = DateTime.Now;
         }
-
-        public Note(string header, string text) : this(header, "Default", text)
+        
+        public Note(string header, string category, string text, DateTime dateTime)
         {
+            Header = header;
+            Category = category;
+            Text = text;
+            DateCreation = dateTime;
         }
+        
 
         public override string ToString()
         {
