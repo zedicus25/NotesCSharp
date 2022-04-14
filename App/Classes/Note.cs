@@ -8,7 +8,7 @@ namespace App
         public string Header { get; set; }
         public string Category { get; set; }
         public string Text { get; set; }
-        public DateTime DateCreation { get; private set; }
+        private DateTime DateCreation { get; set; }
         
         public Note(string header, string category, string text)
         {
@@ -32,6 +32,16 @@ namespace App
             sb.AppendLine("Creation date:");
             sb.AppendLine(DateCreation.ToString());
             sb.AppendLine(Text);
+            return sb.ToString();
+        }
+
+        public string ToStringForFile()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Header+":;");
+            sb.Append(Category+":;");
+            sb.Append(Text+":;");
+            sb.Append(DateCreation.ToString()+":;" + "\n");
             return sb.ToString();
         }
     }
