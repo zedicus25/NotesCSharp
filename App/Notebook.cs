@@ -138,6 +138,8 @@ namespace App
 
         private void ReadFromFile()
         {
+            if(File.Exists("notes.txt") == false)
+                return;;
             string str = File.ReadAllText("notes.txt");
             string[] arr = str.Split('\n');
             Array.Resize(ref arr, arr.Length-1);
