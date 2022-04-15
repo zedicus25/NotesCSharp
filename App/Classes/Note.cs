@@ -8,20 +8,20 @@ namespace App
         public string Header { get; set; }
         public string Category { get; set; }
         public string Text { get; set; }
-        private DateTime DateCreation { get; set; }
+        public DateTime DateCreation { get; private set; }
         
         public Note(string header, string category, string text)
         {
-            Header = header;
-            Category = category;
+            Header = header.ToLower();
+            Category = category.ToLower();
             Text = text;
             DateCreation = DateTime.Now;
         }
         
         public Note(string header, string category, string text, DateTime dateTime)
         {
-            Header = header;
-            Category = category;
+            Header = header.ToLower();
+            Category = category.ToLower();
             Text = text;
             DateCreation = dateTime;
         }
@@ -46,7 +46,7 @@ namespace App
             sb.Append(Header+":;");
             sb.Append(Category+":;");
             sb.Append(Text+":;");
-            sb.Append(DateCreation.ToString()+":;" + "\n");
+            sb.AppendLine(DateCreation.ToString()+":;");
             return sb.ToString();
         }
     }

@@ -9,7 +9,7 @@ namespace App
         private List<Note> _notes;
 
         public Notebook()
-        {
+        { 
             _notes = new List<Note>();
             ReadFromFile();
         }
@@ -72,6 +72,39 @@ namespace App
             }
         }
 
+        public List<Note> FindByHeader(string header)
+        {
+            string hed = header.ToLower();
+            List<Note> result = new List<Note>();
+            foreach (var item in _notes)
+            {
+                if(item.Header == hed)
+                    result.Add(item);
+            }
+            return result;
+        }
+        public List<Note> FindByCategory(string category)
+        {
+            List<Note> result = new List<Note>();
+            foreach (var item in _notes)
+            {
+                if(item.Header == category)
+                    result.Add(item);
+            }
+            return result;
+        }
+
+        public List<Note> FindByDate(DateTime dateTime)
+        {
+            List<Note> result = new List<Note>();
+            foreach (var item in _notes)
+            {
+                if(item.DateCreation.ToShortDateString() == dateTime.ToShortDateString())
+                    result.Add(item);
+            }
+            return result;
+        }
+
         public void ShowAll()
         {
             Console.WriteLine();
@@ -132,7 +165,6 @@ namespace App
             text = Console.ReadLine();
             return new Note(header, category, text);
         }
-
 
         ~Notebook()
         {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace App
 {
@@ -8,14 +9,15 @@ namespace App
         {
             Notebook notebook = new Notebook();
             //notebook.ReadFromFile();
-            notebook.ShowAll();
+            //notebook.ShowAll();
             //notebook.AddNote();
-           // notebook.AddNote();
+            //notebook.AddNote();
             //notebook.UpdateNote();
-           // notebook.ShowAll();
+            //notebook.ShowAll();
             //notebook.SaveToFile();
+            List<Note> notes = new List<Note>(notebook.FindByDate(new DateTime(2022,4,15)));
+            notes.ForEach(Console.WriteLine);
+            //notebook.FindByHeader("HeaDer1");
         }
-        
-        //реализовать метод чтения из файла и вывод по категории, названию и дате через предикаты
     }
 }
